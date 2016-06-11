@@ -12,8 +12,11 @@ namespace NPoco.SqlAzure
 {
     public class SqlAzureDatabase : IDatabase
     {
-        private Database InternalDb { get; set; }
+        private Database InternalDb { get; }
         public RetryPolicy RetryPolicy { get; set; }
+
+        public SqlAzureDatabase(string connectionString)
+            : this(connectionString, DatabaseType.SqlServer2012, 3) { }
 
         public SqlAzureDatabase(string connectionString, DatabaseType databaseType)
             :this(connectionString, databaseType, 3) { }
@@ -21,6 +24,19 @@ namespace NPoco.SqlAzure
         public SqlAzureDatabase(string connectionString, DatabaseType databaseType, int retryCount)
         {
             InternalDb = new Database(connectionString, databaseType);
+            CreateRetryPolicy(retryCount);
+        }
+
+        public SqlAzureDatabase(DbConnection connection) : this(connection, 3) { }
+
+        private SqlAzureDatabase(DbConnection connection, int retryCount)
+        {
+            InternalDb = new Database(connection);
+            CreateRetryPolicy(retryCount);
+        }
+
+        private void CreateRetryPolicy(int retryCount)
+        {
             RetryPolicy = new RetryPolicy(new SqlDatabaseTransientErrorDetectionStrategy(), retryCount);
         }
 
