@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-*",
+    "version": "2.0.0-beta-*",
 
     "dependencies": {
         "CoreCompat.EnterpriseLibrary.TransientFaultHandling": "6.0.1304-r3",
@@ -7,9 +7,16 @@
         "NPoco": "3.4.1"
     },
 
-  "frameworks": {
-    "netstandard1.6": {
-      "imports": "dnxcore50"
+    "frameworks": {
+        "netstandard1.6": {
+            "imports": "dnxcore50"
+        }
+    },
+
+    "packOptions": {
+        "id": "NPoco.SqlAzure",
+        "owners": [ "David Savage" ],
+        "projectUrl": "https://github.com/davidsavagejr/NPoco.SqlAzure",
+        "tags": [ "azure", "sql", "sqlazure", "npoco", "transient", "fault" ]
     }
-  }
 }
