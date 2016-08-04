@@ -57,7 +57,7 @@ EnsurePsbuildInstalled
 exec { & dotnet restore }
 
 # Build
-Invoke-MSBuild
+Invoke-MSBuild Npoco.Azure.sln
 
 # Test
 
