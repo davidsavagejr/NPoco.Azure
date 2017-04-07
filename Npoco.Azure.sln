@@ -3,14 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NPoco.SqlAzure.Core", "NPoco.SqlAzure.Core\NPoco.SqlAzure.Core.xproj", "{2C77415E-D1F6-4377-A43E-C675821CBBB8}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NPoco.SqlAzure.Core", "src\NPoco.SqlAzure.Core\NPoco.SqlAzure.Core.xproj", "{2C77415E-D1F6-4377-A43E-C675821CBBB8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{742BFAA4-BFFF-4839-A047-547DC4548625}"
 	ProjectSection(SolutionItems) = preProject
-		..\appveyor.yml = ..\appveyor.yml
-		..\build.ps1 = ..\build.ps1
-		global.json = global.json
-		..\README.md = ..\README.md
+		appveyor.yml = appveyor.yml
+		build.ps1 = build.ps1
+		src\global.json = src\global.json
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global
