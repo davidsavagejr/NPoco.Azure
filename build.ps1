@@ -51,8 +51,6 @@ function Exec
 # Clean
 if(Test-Path .\artifacts) { Remove-Item .\artifacts -Force -Recurse }
 
-# Initialize
-EnsurePsbuildInstalled
 
 exec { & dotnet restore .\src\NPoco.SqlAzure.Core}
 
