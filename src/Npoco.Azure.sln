@@ -7,7 +7,10 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NPoco.SqlAzure.Core", "NPoc
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{742BFAA4-BFFF-4839-A047-547DC4548625}"
 	ProjectSection(SolutionItems) = preProject
+		..\appveyor.yml = ..\appveyor.yml
+		..\build.ps1 = ..\build.ps1
 		global.json = global.json
+		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
 Global
