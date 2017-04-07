@@ -49,7 +49,12 @@ namespace NPoco.SqlAzure
             get { return InternalDb.OneTimeCommandTimeout; }
             set { InternalDb.OneTimeCommandTimeout = value; }
         }
-        public MapperCollection Mappers => InternalDb.Mappers;
+        //public MapperCollection Mappers => InternalDb.Mappers;
+        public MapperCollection Mappers
+        {
+            get { return InternalDb.Mappers; }
+            set { InternalDb.Mappers = value; }
+        }
         public IPocoDataFactory PocoDataFactory
         {
             get { return InternalDb.PocoDataFactory; }
