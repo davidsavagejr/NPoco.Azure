@@ -57,7 +57,7 @@ EnsurePsbuildInstalled
 exec { & dotnet restore .\src\NPoco.SqlAzure.Core}
 
 # Build
-Invoke-MSBuild Npoco.Azure.sln
+exec { & dotnet build "src\NPoco.SqlAzure.Core" -c Release --no-dependencies }
 
 # Test
 
