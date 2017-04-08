@@ -25,6 +25,7 @@ namespace NPoco.SqlAzure
         public SqlAzureDatabase(string connectionString, DatabaseType databaseType, int retryCount)
         {
             InternalDb = new Database(new SqlConnection(connectionString), databaseType);
+            OpenSharedConnection();
             CreateRetryPolicy(retryCount);
         }
 
@@ -71,6 +72,7 @@ namespace NPoco.SqlAzure
 
         public void Dispose()
         {
+            CloseSharedConnection();
             InternalDb.Dispose();
         }
 
