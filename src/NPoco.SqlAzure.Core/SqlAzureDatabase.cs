@@ -23,10 +23,14 @@ namespace NPoco.SqlAzure
             :this(connectionString, databaseType, 3) { }
 
         public SqlAzureDatabase(string connectionString, DatabaseType databaseType, int retryCount)
+            :this(connectionString, databaseType, SqlClientFactory.Instance, retryCount) { }
+
+        public SqlAzureDatabase(string connectionString, DatabaseType databaseType, DbProviderFactory provider, int retryCount)
         {
-            InternalDb = new Database(new SqlConnection(connectionString), databaseType);
+            InternalDb = new Database(connectionString, databaseType, provider);
             CreateRetryPolicy(retryCount);
         }
+        
 
         public SqlAzureDatabase(DbConnection connection) : this(connection, 3) { }
 
