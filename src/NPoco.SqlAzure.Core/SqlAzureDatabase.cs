@@ -24,8 +24,9 @@ namespace NPoco.SqlAzure
 
         public SqlAzureDatabase(string connectionString, DatabaseType databaseType, int retryCount)
         {
-            InternalDb = new Database(new SqlConnection(connectionString), databaseType);
-            OpenSharedConnection();
+            var connection = new SqlConnection(connectionString);
+            connection.Open();
+            InternalDb = new Database(connection, databaseType);
             CreateRetryPolicy(retryCount);
         }
 
