@@ -24,9 +24,7 @@ namespace NPoco.SqlAzure
 
         public SqlAzureDatabase(string connectionString, DatabaseType databaseType, int retryCount)
         {
-            var connection = new SqlConnection(connectionString);
-            connection.Open();
-            InternalDb = new Database(connection, databaseType);
+            InternalDb = new Database(new SqlConnection(connectionString), databaseType);
             CreateRetryPolicy(retryCount);
         }
 
@@ -51,7 +49,7 @@ namespace NPoco.SqlAzure
             get { return InternalDb.OneTimeCommandTimeout; }
             set { InternalDb.OneTimeCommandTimeout = value; }
         }
-        //public MapperCollection Mappers => InternalDb.Mappers;
+
         public MapperCollection Mappers
         {
             get { return InternalDb.Mappers; }
@@ -73,7 +71,6 @@ namespace NPoco.SqlAzure
 
         public void Dispose()
         {
-            CloseSharedConnection();
             InternalDb.Dispose();
         }
 
