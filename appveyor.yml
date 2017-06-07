@@ -1,3 +1,4 @@
+image: Visual Studio 2015
 version: '{build}'
 pull_requests:
   do_not_increment_build_number: true
@@ -14,16 +15,10 @@ artifacts:
   name: NuGet
 deploy:
 - provider: NuGet
-  server: https://www.myget.org/F/npocoazure-ci/api/v2/package
+  server: https://ci.appveyor.com/nuget/headset
   api_key:
-    secure: QqTnjOhBWYBj60GLoXKJZEFKjMY++qPNLAL2cdvcCKVv0RFckHvKA7nJ+SUlvxjL
+    secure: uizfzdk3UG8aBRKJOAq/EDSJQMbUtZCwT8scGJqhxmM=
   skip_symbols: true
+  artifact: Nuget
   on:
     branch: master
-- provider: NuGet
-  name: production
-  api_key: 
-    secure: H840IdbJKV97Lcvd0ZQ0sN3lCayII5QAhPD1Kiw5sz9iMvfO5UWkupj4ZaJ43eph 
-  on:
-    branch: master
-    appveyor_repo_tag: true

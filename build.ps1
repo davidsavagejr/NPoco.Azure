@@ -51,13 +51,11 @@ function Exec
 # Clean
 if(Test-Path .\artifacts) { Remove-Item .\artifacts -Force -Recurse }
 
-# Initialize
-EnsurePsbuildInstalled
 
-exec { & dotnet restore }
+exec { & dotnet restore .\src\NPoco.SqlAzure.Core}
 
 # Build
-Invoke-MSBuild src\Npoco.Azure.sln
+exec { & dotnet build "src\NPoco.SqlAzure.Core" -c Release --no-dependencies }
 
 # Test
 

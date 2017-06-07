@@ -23,10 +23,14 @@ namespace NPoco.SqlAzure
             :this(connectionString, databaseType, 3) { }
 
         public SqlAzureDatabase(string connectionString, DatabaseType databaseType, int retryCount)
+            :this(connectionString, databaseType, SqlClientFactory.Instance, retryCount) { }
+
+        public SqlAzureDatabase(string connectionString, DatabaseType databaseType, DbProviderFactory provider, int retryCount)
         {
-            InternalDb = new Database(new SqlConnection(connectionString), databaseType);
+            InternalDb = new Database(connectionString, databaseType, provider);
             CreateRetryPolicy(retryCount);
         }
+        
 
         public SqlAzureDatabase(DbConnection connection) : this(connection, 3) { }
 
@@ -49,7 +53,12 @@ namespace NPoco.SqlAzure
             get { return InternalDb.OneTimeCommandTimeout; }
             set { InternalDb.OneTimeCommandTimeout = value; }
         }
-        public MapperCollection Mappers => InternalDb.Mappers;
+
+        public MapperCollection Mappers
+        {
+            get { return InternalDb.Mappers; }
+            set { InternalDb.Mappers = value; }
+        }
         public IPocoDataFactory PocoDataFactory
         {
             get { return InternalDb.PocoDataFactory; }
